@@ -5,7 +5,7 @@
 
 - 🌱 I’m currently learning **JavaScript and React**
 
-- 💬 Ask me about **react, C, and object oriented languages**
+- 💬 Ask me about **React, Angular, and object oriented languages**
 
 - 📫 How to reach me **gabrielmds0306@gmail.com**
 
