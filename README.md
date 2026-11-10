@@ -4,9 +4,9 @@
 
 </div>
 
-<img align="right" width="236" src="./assets/statue.png" alt="Violet classical bust with geometric orbital lines" />
+<img align="right" width="236" src="./assets/statue-transparent.png" alt="Violet classical bust with geometric orbital lines" />
 
-## Hi, I'm Gabriel
+### Hi, I'm Gabriel
 
 **Software Engineer · Systems, Automation & Applied AI**
 
@@ -22,7 +22,7 @@ Based in Brazil · **Computer Engineering @ UFG**
 
 ---
 
-## Featured projects
+### Featured projects
 
 <div align="center">
   <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/fan-chat-horizontal.svg" width="100%" alt="FURIA Fan Chat: conversational esports interface with simulated chat, match information, team profiles and news. React, Vite and Tailwind CSS." /></a>
@@ -51,7 +51,7 @@ Based in Brazil · **Computer Engineering @ UFG**
 
 ---
 
-## Toolkit
+### Toolkit
 
 <div align="center">
   <img src="./assets/toolkit-icons.svg" width="100%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, PostgreSQL, Prisma, Google Cloud and n8n." />
@@ -67,7 +67,7 @@ Based in Brazil · **Computer Engineering @ UFG**
 
 </details>
 
-## Currently
+### Currently
 
 <div align="center">
   <img src="./assets/currently.svg" width="100%" alt="Current focus: software and integrations, applied AI, system design, and independent products." />
@@ -85,7 +85,7 @@ Based in Brazil · **Computer Engineering @ UFG**
 
 ---
 
-## Professional work
+### Professional work
 
 I build and maintain production software, integrations, and internal tools that connect systems and help streamline day-to-day workflows. Most of this work lives in private repositories.
 
