@@ -24,8 +24,8 @@ Based in Brazil · **Computer Engineering @ UFG**
 
 <div align="center">
   <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/furia-fan-chat-fixed.svg" width="49%" alt="FURIA Fan Chat: conversational esports interface with simulated chat, match, team and news views." /></a>
-  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/furia-know-your-fan.png" width="49%" alt="FURIA Know Your Fan: fan registration with form validation, document upload and Firebase." /></a>
-  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/amazon-scraper.png" width="49%" alt="Amazon Product Scraper: full-stack product data extraction experiment." /></a>
+  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/furia-know-your-fan.svg" width="49%" alt="FURIA Know Your Fan: fan registration with form validation, document upload and Firebase." /></a>
+  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/amazon-scraper.svg" width="49%" alt="Amazon Product Scraper: full-stack product data extraction experiment." /></a>
 </div>
 
 <details>

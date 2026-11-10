@@ -8,7 +8,7 @@
     <path d="M14 20v8m-4-4h8"/><circle cx="32" cy="22" r="1.5" fill="#b693f9" stroke="none"/><circle cx="36" cy="26" r="1.5" fill="#b693f9" stroke="none"/>
   </g>
   <g font-family="Inter,Arial,sans-serif"><text x="72" y="40" fill="#f2eafb" font-weight="650" font-size="20">FURIA Fan Chat</text>
-  <path d="M341 23h16v15m-19-2 19-19" stroke="#b693f9" stroke-width="1.4" fill="none"/>
+  <path d="M340 38 L357 21 M345 21 H357 V33" stroke="#b693f9" stroke-width="1.4" fill="none"/>
   <g fill="#dbd6e3" font-size="16.2"><text x="23" y="80">Conversational esports interface</text><text x="23" y="103">with simulated chat, match,</text><text x="23" y="126">team and news views.</text></g>
   <g fill="#242132" stroke="#484055" stroke-width=".8"><rect x="23" y="161" width="66" height="27" rx="6"/><rect x="99" y="161" width="52" height="27" rx="6"/><rect x="161" y="161" width="82" height="27" rx="6"/></g>
   <g fill="#dad4e7" font-size="12.5" font-weight="500"><text x="33" y="180">React</text><text x="109" y="180">Vite</text><text x="171" y="180">Tailwind</text></g></g>
