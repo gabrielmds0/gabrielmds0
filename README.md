@@ -1,47 +1,60 @@
-<p align="center">
-  <img src="./assets/banner.svg" alt="Gabriel Melo | Software Engineer — Systems, Automation, Applied AI" width="100%" />
-</p>
+<div align="center">
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/gabriel-melo-dos-santos/">LinkedIn</a>
-  &nbsp;&nbsp;·&nbsp;&nbsp;
-  <a href="mailto:gabrielmds0306@gmail.com">Email</a>
-  &nbsp;&nbsp;·&nbsp;&nbsp;
-  <a href="https://github.com/gabrielmds0?tab=repositories">Repositories</a>
-</p>
+<img src="./assets/banner.png" alt="Gabriel Melo — Software Engineer. Dark astral landscape, violet geometric portal, systems / automation / AI." width="100%" />
 
-### About
+</div>
 
-I'm **Gabriel**, a software engineer based in Brazil and a **Computer Engineering student at UFG**. I work across the stack, from APIs, authentication, and integrations to the interfaces and automations people use every day.
+<img align="right" width="236" src="./assets/statue.png" alt="Violet classical bust with geometric orbital lines" />
 
-I like owning a problem end to end: understanding the workflow, designing a practical solution, shipping it, and keeping it reliable. I'm especially interested in software that reduces manual work, and I'm exploring where **applied AI** can make those systems better.
+## Hi, I'm Gabriel
 
-### Right now
+**Software Engineer · Systems, Automation & Applied AI**
 
-- **At work:** Building and maintaining production software, integrations, and internal tools.
-- **Studying:** Applied AI, agent workflows, retrieval, evaluation, and ML fundamentals.
-- **On my own time:** Prototyping and testing independent products.
+I build and maintain software systems that connect products, data, and operations. My work spans backend services, interfaces, integrations, and automation, with a growing focus on applied AI.
 
-### Selected projects
+Based in Brazil · **Computer Engineering @ UFG**
 
-**[FURIA Fan Chat](https://github.com/gabrielmds0/FuriaFanChat)**  
-A conversational esports interface with team, match, and news views. Built with React, Vite, Tailwind CSS, and mock data.
+[LinkedIn](https://www.linkedin.com/in/gabriel-melo-dos-santos/) · [Email](mailto:gabrielmds0306@gmail.com) · [All repositories](https://github.com/gabrielmds0?tab=repositories)
 
-**[FURIA Know Your Fan](https://github.com/gabrielmds0/FuriaKnowYourFan)**  
-A fan-registration experience with form validation, document upload, and Firebase integration.
+<br clear="right" />
 
-**[Amazon Product Scraper](https://github.com/gabrielmds0/AmazonScraper)**  
-A full-stack experiment in product data extraction, built with TypeScript, Bun, and Express.
+---
 
-*Most of my production engineering work is in private repositories. I share public projects, experiments, and general technical lessons here when possible.*
+## Featured projects
 
-### Tech I use
+<div align="center">
+  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/furia-fan-chat.png" width="32%" alt="FURIA Fan Chat — React, Vite and Tailwind" /></a>
+  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/furia-know-your-fan.png" width="32%" alt="FURIA Know Your Fan — React and Firebase" /></a>
+  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/amazon-scraper.png" width="32%" alt="Amazon Scraper — TypeScript, Bun and Express" /></a>
+</div>
 
-- **Apps & services:** TypeScript, React, Next.js, Node.js, NestJS
-- **Data & cloud:** PostgreSQL, Prisma, Google Cloud
-- **Automation & tooling:** n8n, GitHub Actions, REST APIs
-- **Also working with:** Python, AI workflows
+<sub>Most of my production work lives in private repositories. These are public experiments and projects; I share technical write-ups when appropriate.</sub>
+
+---
+
+<div align="center">
+  <img src="./assets/toolkit.png" width="49%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, REST APIs, PostgreSQL, Prisma, Google Cloud, n8n" />
+  <img src="./assets/currently.png" width="49%" alt="Currently: production software, AI agents, retrieval systems, system design, automation, and independent products" />
+</div>
+
+<details>
+<summary>Tooling and current work in text</summary>
+
+**Languages:** TypeScript, JavaScript, Python  
+**Frontend:** React, Next.js, Tailwind CSS  
+**Backend:** Node.js, NestJS, REST APIs  
+**Data & infrastructure:** PostgreSQL, Prisma, GCP, n8n
+
+Right now, I work on production software and integrations, explore applied AI and agent workflows, and study system design and reliable automation.
+
+</details>
+
+---
 
 ### Outside the editor
 
 Outside software, I run, lift, play beach volleyball, and study languages.
+
+---
+
+<p align="center"><i>Curiosity, discipline, and iteration.</i></p>
