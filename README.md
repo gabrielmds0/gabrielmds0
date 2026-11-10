@@ -23,9 +23,9 @@ Based in Brazil · **Computer Engineering @ UFG**
 ## Featured projects
 
 <div align="center">
-  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/furia-fan-chat.png" width="32%" alt="FURIA Fan Chat — React, Vite and Tailwind" /></a>
-  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/furia-know-your-fan.png" width="32%" alt="FURIA Know Your Fan — React and Firebase" /></a>
-  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/amazon-scraper.png" width="32%" alt="Amazon Scraper — TypeScript, Bun and Express" /></a>
+  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/furia-fan-chat.png" width="49%" alt="FURIA Fan Chat — React, Vite and Tailwind" /></a>
+  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/furia-know-your-fan.png" width="49%" alt="FURIA Know Your Fan — React and Firebase" /></a>
+  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/amazon-scraper.png" width="49%" alt="Amazon Scraper — TypeScript, Bun and Express" /></a>
 </div>
 
 <sub>Most of my production work lives in private repositories. These are public experiments and projects; I share technical write-ups when appropriate.</sub>
@@ -33,8 +33,8 @@ Based in Brazil · **Computer Engineering @ UFG**
 ---
 
 <div align="center">
-  <img src="./assets/toolkit.png" width="49%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, REST APIs, PostgreSQL, Prisma, Google Cloud, n8n" />
-  <img src="./assets/currently.png" width="49%" alt="Currently: production software, AI agents, retrieval systems, system design, automation, and independent products" />
+  <img src="./assets/toolkit.png" width="85%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, REST APIs, PostgreSQL, Prisma, Google Cloud, n8n" />
+  <img src="./assets/currently.png" width="85%" alt="Currently: production software, AI agents, retrieval systems, system design, automation, and independent products" />
 </div>
 
 <details>
