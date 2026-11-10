@@ -159,6 +159,65 @@ ${cols}
 `;
 }
 
+// Phone variants: GitHub scales README images to the screen, so the wide panels
+// shrink their text to ~6px on a phone. These are drawn at phone width instead
+// and picked with <source media="(max-width: 600px)">.
+const CW = 440;
+
+function cardCompact(p, mode) {
+  const t = THEMES[mode];
+  const lines = wrap(p.text, 38);
+  const H = 76 + lines.length * 26 + 62;
+  const desc = lines.map((l, i) => `<text class="d" x="24" y="${92 + i * 26}">${esc(l)}</text>`).join("");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${CW}" height="${H}" viewBox="0 0 ${CW} ${H}" role="img" aria-label="${esc(`${p.name}: ${p.text} Built with ${p.stack.join(", ")}.`)}">
+<defs>${halo(t, mode)}<radialGradient id="w" cx="1" cy="1" r=".8"><stop offset="0" stop-color="${t.wash}" stop-opacity="${mode === "dark" ? 0.22 : 0.1}"/><stop offset="1" stop-color="${t.wash}" stop-opacity="0"/></radialGradient>
+<clipPath id="c"><rect x=".5" y=".5" width="${CW - 1}" height="${H - 1}" rx="12"/></clipPath></defs>
+<style>${fontCss("sans")}
+text{font-family:${SANS}}
+.n{font-weight:600;font-size:25px;letter-spacing:-.01em;fill:${t.title}}
+.d{font-weight:300;font-size:17px;fill:${t.body}}
+.s{font-weight:500;font-size:12.5px;letter-spacing:.16em;fill:${t.accent}}${motion}
+</style>
+<g clip-path="url(#c)"><rect width="${CW}" height="${H}" fill="url(#w)"/>${starfield(p.slug + ":m", t, CW, H, 30, mode, [{ x: 18, y: 20, w: 380, h: H - 40 }])}</g>
+<rect x=".5" y=".5" width="${CW - 1}" height="${H - 1}" rx="12" fill="none" stroke="${t.border}"/>
+<text class="n" x="23" y="52">${esc(p.name)}</text>
+${desc}
+<text class="s" x="24" y="${H - 26}">${esc(p.stack.join(" · ").toUpperCase())}</text>
+<path d="M${CW - 38} 42L${CW - 22} 26M${CW - 33} 26H${CW - 22}V37" fill="none" stroke="${t.accent}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+}
+
+function toolkitCompact(mode) {
+  const t = THEMES[mode];
+  const colW = (CW - 48) / 2, rowGap = 30;
+  let y = 30, out = "";
+  for (let r = 0; r < TOOLKIT.length; r += 2) {
+    const pair = TOOLKIT.slice(r, r + 2);
+    pair.forEach(([label, items], c) => {
+      const x = 24 + colW * c;
+      out += `${sparkle(x + 4, y + 14, 5, t.accent)}<text class="l" x="${x + 16}" y="${y + 19}">${esc(label.toUpperCase())}</text>`;
+      items.forEach((name, j) => {
+        const yy = y + 54 + j * rowGap;
+        out += `<path transform="translate(${x} ${yy - 14}) scale(.7)" d="${ICONS[name]}" fill="${t.icon}"/><text class="i" x="${x + 26}" y="${yy}">${esc(name)}</text>`;
+      });
+    });
+    y += 54 + Math.max(...pair.map(([, items]) => items.length)) * rowGap + 10;
+  }
+  const H = y + 6;
+  const alt = TOOLKIT.map(([l, items]) => `${l}: ${items.join(", ")}`).join(". ");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${CW}" height="${H}" viewBox="0 0 ${CW} ${H}" role="img" aria-label="${esc(`Toolkit. ${alt}.`)}">
+<style>${fontCss("sans")}
+text{font-family:${SANS}}
+.l{font-weight:500;font-size:12px;letter-spacing:.18em;fill:${t.accent}}
+.i{font-weight:400;font-size:17px;fill:${t.title}}
+</style>
+<rect x=".5" y=".5" width="${CW - 1}" height="${H - 1}" rx="12" fill="none" stroke="${t.border}"/>
+${out}
+</svg>
+`;
+}
+
 // Horizon between chapters: a fading meridian with a short constellation riding it.
 function horizon(name, mode) {
   const t = THEMES[mode];
@@ -223,6 +282,8 @@ const bullet = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" v
 for (const mode of ["dark", "light"]) {
   for (const p of PROJECTS) writeFileSync(resolve(OUT, `${p.slug}-${mode}.svg`), card(p, mode));
   writeFileSync(resolve(OUT, `toolkit-${mode}.svg`), toolkit(mode));
+  for (const p of PROJECTS) writeFileSync(resolve(OUT, `${p.slug}-${mode}-m.svg`), cardCompact(p, mode));
+  writeFileSync(resolve(OUT, `toolkit-${mode}-m.svg`), toolkitCompact(mode));
   for (const name of ["intro", "sky"]) writeFileSync(resolve(OUT, `horizon-${name}-${mode}.svg`), horizon(name, mode));
   writeFileSync(resolve(OUT, `footer-${mode}.svg`), footer(mode));
 }

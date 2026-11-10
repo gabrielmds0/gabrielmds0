@@ -203,7 +203,7 @@ ${sparkle(lx + 146, ly, 8.5, C.bright)}<text class="lg" x="${lx + 166}" y="${ly 
 
   const summary = `${fmt(cal.totalContributions)} contributions between ${short(first)} ${first.slice(0, 4)} and ${short(last)} ${last.slice(0, 4)}, on ${active} active days. Longest streak: ${longest.length} days. Best day: ${short(best.date)} with ${best.count} contributions.`;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t d">
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t d">
 <title id="t">Contribution sky of ${LOGIN}</title>
 <desc id="d">${summary}</desc>
 <defs>
@@ -237,9 +237,18 @@ ${months}
 ${factSvg}
 </svg>
 `;
+  return { svg, summary };
 }
 
 const cal = await loadCalendar();
 await mkdir(dirname(OUT), { recursive: true });
-await writeFile(OUT, render(cal));
+const { svg, summary } = render(cal);
+await writeFile(OUT, svg);
+
+// Keep the README's alt text in step with the drawing for screen readers.
+const README = resolve(ROOT, "README.md");
+const readme = await readFile(README, "utf8");
+const alt = `Contribution sky, a night-sky drawing of the contribution calendar: ${summary}`.replace(/"/g, "&quot;");
+const next = readme.replace(/(<!-- sky:start -->)[\s\S]*?(<!-- sky:end -->)/, `$1<img src="./assets/constellation.svg" width="100%" alt="${alt}" />$2`);
+if (next !== readme) await writeFile(README, next);
 console.log(`constellation.svg written (${cal.totalContributions} contributions)`);
