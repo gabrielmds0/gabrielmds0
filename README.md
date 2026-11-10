@@ -23,9 +23,9 @@ Based in Brazil · **Computer Engineering @ UFG**
 ## Featured projects
 
 <div align="center">
-  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/furia-fan-chat-fixed.svg" width="49%" alt="FURIA Fan Chat: conversational esports interface with simulated chat, match, team and news views." /></a>
-  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/furia-know-your-fan.svg" width="49%" alt="FURIA Know Your Fan: fan registration with form validation, document upload and Firebase." /></a>
-  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/amazon-scraper.svg" width="49%" alt="Amazon Product Scraper: full-stack product data extraction experiment." /></a>
+  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/fan-chat-icons.svg" width="49%" alt="FURIA Fan Chat: conversational esports interface using React, Vite and Tailwind CSS." /></a>
+  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/know-your-fan-icons.svg" width="49%" alt="FURIA Know Your Fan: fan registration using React, Firebase and Vite." /></a>
+  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/scraper-icons.svg" width="49%" alt="Amazon Product Scraper: product data extraction using TypeScript, Bun and Express." /></a>
 </div>
 
 <details>
@@ -52,24 +52,18 @@ Based in Brazil · **Computer Engineering @ UFG**
 ## Toolkit
 
 <div align="center">
-  <img src="./assets/toolkit.png" width="85%" alt="Toolkit: languages, frontend, backend, data and infrastructure." />
+  <img src="./assets/toolkit-icons.svg" width="85%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, PostgreSQL, Prisma, Google Cloud and n8n." />
 </div>
 
-**Languages**
+<details>
+<summary>Toolkit in text</summary>
 
-![TypeScript](https://img.shields.io/badge/TypeScript-241d35?style=flat-square&logo=typescript&logoColor=cbb2ff) ![JavaScript](https://img.shields.io/badge/JavaScript-241d35?style=flat-square&logo=javascript&logoColor=cbb2ff) ![Python](https://img.shields.io/badge/Python-241d35?style=flat-square&logo=python&logoColor=cbb2ff)
+**Languages:** TypeScript, JavaScript, Python<br>
+**Frontend:** React, Next.js, Tailwind CSS<br>
+**Backend:** Node.js, NestJS, REST APIs<br>
+**Data & infrastructure:** PostgreSQL, Prisma, Google Cloud, n8n
 
-**Frontend**
-
-![React](https://img.shields.io/badge/React-241d35?style=flat-square&logo=react&logoColor=cbb2ff) ![Next.js](https://img.shields.io/badge/Next.js-241d35?style=flat-square&logo=nextdotjs&logoColor=cbb2ff) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-241d35?style=flat-square&logo=tailwindcss&logoColor=cbb2ff)
-
-**Backend**
-
-![Node.js](https://img.shields.io/badge/Node.js-241d35?style=flat-square&logo=nodedotjs&logoColor=cbb2ff) ![NestJS](https://img.shields.io/badge/NestJS-241d35?style=flat-square&logo=nestjs&logoColor=cbb2ff) ![REST APIs](https://img.shields.io/badge/REST_APIs-241d35?style=flat-square)
-
-**Data & infrastructure**
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-241d35?style=flat-square&logo=postgresql&logoColor=cbb2ff) ![Prisma](https://img.shields.io/badge/Prisma-241d35?style=flat-square&logo=prisma&logoColor=cbb2ff) ![Google Cloud](https://img.shields.io/badge/Google_Cloud-241d35?style=flat-square&logo=googlecloud&logoColor=cbb2ff) ![n8n](https://img.shields.io/badge/n8n-241d35?style=flat-square&logo=n8n&logoColor=cbb2ff)
+</details>
 
 ## Currently
 
