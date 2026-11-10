@@ -85,9 +85,13 @@ Based in Brazil · **Computer Engineering @ UFG**
 
 ---
 
-### Professional work
+### Contribution sky
 
-I build and maintain production software, integrations, and internal tools that connect systems and help streamline day-to-day workflows. Most of this work lives in private repositories.
+<div align="center">
+  <img src="./assets/constellation.svg" width="100%" alt="The last year of GitHub contributions drawn as a night sky: each day is a star, brighter stars mark busier days, and consecutive active days are joined into constellations." />
+</div>
+
+<sub>Every day of the last year is a star; consecutive active days become constellations. Redrawn daily by a GitHub Action. Most of these commits land in private repositories at work.</sub>
 
 ### Outside the editor
 
