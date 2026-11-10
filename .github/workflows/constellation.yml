@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [scripts/constellation.mjs, .github/workflows/constellation.yml]
+    paths: [scripts/**, .github/workflows/constellation.yml]
 
 permissions:
   contents: write

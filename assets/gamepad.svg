@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Game controller">
-  <path d="M14 15h20c4 0 6 3 7 7l2 10c1 5-3 7-6 4l-6-5H17l-6 5c-3 3-7 1-6-4l2-10c1-4 3-7 7-7Z" fill="#171321" stroke="#b693f9" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M14 20v8m-4-4h8" stroke="#b693f9" stroke-width="2.5" stroke-linecap="round"/>
-  <circle cx="32" cy="22" r="1.7" fill="#b693f9"/><circle cx="36" cy="26" r="1.7" fill="#b693f9"/>
-</svg>

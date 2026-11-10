@@ -4,100 +4,49 @@
 
 </div>
 
-<img align="right" width="236" src="./assets/statue-transparent.png" alt="Violet classical bust with geometric orbital lines" />
+<img align="right" width="220" src="./assets/statue-transparent.png" alt="Violet classical bust with geometric orbital lines" />
 
 ### Hi, I'm Gabriel
-
-**Software Engineer · Systems, Automation & Applied AI**
 
 **I turn complex workflows into reliable software.**
 
 I build backend services, integrations, and automations that connect products, data, and day-to-day operations. I'm also exploring applied AI where it can reduce manual work.
 
-Based in Brazil · **Computer Engineering @ UFG**
+Software Engineer · Computer Engineering @ UFG · Brazil
 
 [LinkedIn](https://www.linkedin.com/in/gabriel-melo-dos-santos/) · [Email](mailto:gabrielmds0306@gmail.com) · [All repositories](https://github.com/gabrielmds0?tab=repositories)
 
 <br clear="right" />
 
----
-
 ### Featured projects
 
-<div align="center">
-  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/fan-chat-horizontal.svg" width="100%" alt="FURIA Fan Chat: conversational esports interface with simulated chat, match information, team profiles and news. React, Vite and Tailwind CSS." /></a>
-  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/know-your-fan-horizontal.svg" width="100%" alt="FURIA Know Your Fan: fan registration with validation, document uploads and Firebase integration. React, Firebase and Vite." /></a>
-  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/scraper-horizontal.svg" width="100%" alt="Amazon Product Scraper: product search experiment using TypeScript, Bun and Express." /></a>
-</div>
+<a href="https://github.com/gabrielmds0/FuriaFanChat"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/profile/furia-fan-chat-light.svg"><img src="./assets/profile/furia-fan-chat-dark.svg" width="100%" alt="FURIA Fan Chat: conversational esports interface with simulated chat, match information, team profiles and news. React, Vite and Tailwind CSS." /></picture></a>
+<a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/profile/furia-know-your-fan-light.svg"><img src="./assets/profile/furia-know-your-fan-dark.svg" width="100%" alt="FURIA Know Your Fan: fan registration with validation, document uploads and Firebase integration. React, Firebase and Vite." /></picture></a>
+<a href="https://github.com/gabrielmds0/AmazonScraper"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/profile/amazon-scraper-light.svg"><img src="./assets/profile/amazon-scraper-dark.svg" width="100%" alt="Amazon Product Scraper: full-stack product search experiment with organized titles, ratings, reviews and images. TypeScript, Bun and Express." /></picture></a>
 
-<details>
-<summary>Project details and technologies</summary>
-
-**[FURIA Fan Chat](https://github.com/gabrielmds0/FuriaFanChat)** — An esports chat experience with simulated conversations, match information, team profiles, and news.
-
-![React](https://img.shields.io/badge/React-241d35?style=flat-square&logo=react&logoColor=cbb2ff) ![Vite](https://img.shields.io/badge/Vite-241d35?style=flat-square&logo=vite&logoColor=cbb2ff) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-241d35?style=flat-square&logo=tailwindcss&logoColor=cbb2ff)
-
-**[FURIA Know Your Fan](https://github.com/gabrielmds0/FuriaKnowYourFan)** — Fan registration with form validation, document uploads, and Firebase integration.
-
-![React](https://img.shields.io/badge/React-241d35?style=flat-square&logo=react&logoColor=cbb2ff) ![Vite](https://img.shields.io/badge/Vite-241d35?style=flat-square&logo=vite&logoColor=cbb2ff) ![Firebase](https://img.shields.io/badge/Firebase-241d35?style=flat-square&logo=firebase&logoColor=cbb2ff)
-
-**[Amazon Product Scraper](https://github.com/gabrielmds0/AmazonScraper)** — A full-stack experiment that searches product listings and displays organized results.
-
-![TypeScript](https://img.shields.io/badge/TypeScript-241d35?style=flat-square&logo=typescript&logoColor=cbb2ff) ![Bun](https://img.shields.io/badge/Bun-241d35?style=flat-square&logo=bun&logoColor=cbb2ff) ![Express](https://img.shields.io/badge/Express-241d35?style=flat-square&logo=express&logoColor=cbb2ff)
-
-</details>
-
-<sub>Most of my production work lives in private repositories. These are public experiments and projects; I share technical write-ups when appropriate.</sub>
-
----
+<sub>Most of my production work lives in private repositories. These are public experiments; I share technical write-ups when appropriate.</sub>
 
 ### Toolkit
 
-<div align="center">
-  <img src="./assets/toolkit-icons.svg" width="100%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, PostgreSQL, Prisma, Google Cloud and n8n." />
-</div>
-
-<details>
-<summary>Toolkit in text</summary>
-
-**Languages:** TypeScript, JavaScript, Python<br>
-**Frontend:** React, Next.js, Tailwind CSS<br>
-**Backend:** Node.js, NestJS, REST APIs<br>
-**Data & infrastructure:** PostgreSQL, Prisma, Google Cloud, n8n
-
-</details>
+<picture><source media="(prefers-color-scheme: light)" srcset="./assets/profile/toolkit-light.svg"><img src="./assets/profile/toolkit-dark.svg" width="100%" alt="Toolkit. Languages: TypeScript, JavaScript, Python. Frontend: React, Next.js, Tailwind CSS. Backend: Node.js, NestJS, REST APIs. Data and infrastructure: PostgreSQL, Prisma, Google Cloud, n8n." /></picture>
 
 ### Currently
-
-<div align="center">
-  <img src="./assets/currently.svg" width="100%" alt="Current focus: software and integrations, applied AI, system design, and independent products." />
-</div>
-
-<details>
-<summary>Current work in text</summary>
 
 - Building production software and integrations.
 - Exploring applied AI, agent workflows, and retrieval systems.
 - Studying system design and reliable automation.
 - Prototyping independent products and ideas.
 
-</details>
-
----
-
 ### Contribution sky
 
-<div align="center">
-  <img src="./assets/constellation.svg" width="100%" alt="The last year of GitHub contributions drawn as a night sky: each day is a star, brighter stars mark busier days, and consecutive active days are joined into constellations." />
-</div>
+<img src="./assets/constellation.svg" width="100%" alt="The last year of GitHub contributions on a calendar grid drawn as a night sky. Each day is a star; brighter stars mean more contributions. The longest streak is drawn as a constellation and the best day is circled." />
 
-<sub>Every day of the last year is a star; consecutive active days become constellations. Redrawn daily by a GitHub Action. Most of these commits land in private repositories at work.</sub>
+<sub>One star per day, laid out like the contribution calendar below. The highlighted figure is my longest streak. Redrawn daily by a GitHub Action; most of these commits land in private repositories at work.</sub>
 
 ### Outside the editor
 
-Outside software, I run, lift, play beach volleyball, and study languages.
+I run, lift, play beach volleyball, and study languages.
 
 ---
 
-<p align="center"><i>Curiosity, discipline, and iteration.</i><br>
-<a href="mailto:gabrielmds0306@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/gabriel-melo-dos-santos/">LinkedIn</a></p>
+<p align="center"><i>Curiosity, discipline, and iteration.</i></p>

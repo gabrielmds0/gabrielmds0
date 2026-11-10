@@ -1,31 +1,31 @@
 #!/usr/bin/env node
-// Renders the last year of GitHub contributions as a night sky:
-// every day is a star, brightness follows volume, consecutive active days
-// are joined into constellations. Output: assets/constellation.svg
+// Renders the last year of GitHub contributions as a night sky laid on the
+// contribution calendar grid: every day is a star, brightness follows volume,
+// the longest streak is drawn as a named constellation and the best day is ringed.
 //
 // Usage:
 //   GITHUB_TOKEN=... [PROFILE_LOGIN=user] node scripts/constellation.mjs
-//   node scripts/constellation.mjs --fixture data.json   (offline preview)
+//   node scripts/constellation.mjs --fixture calendar.json   (offline preview)
 
 import { writeFile, readFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { ROOT, SANS, fontCss, sparkle } from "./theme.mjs";
 
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = resolve(ROOT, "assets/constellation.svg");
 const LOGIN = process.env.PROFILE_LOGIN || "gabrielmds0";
 
-// Palette shared with the other profile panels.
+// The sky stays dark in both GitHub themes: it is a window, like the banner.
 const C = {
-  panel: "#0d1117",
+  top: "#0d1117",
+  bottom: "#150f24",
   border: "#30363d",
-  dust: "#3b3150",
-  line: "#8d6fd1",
-  star: "#cbb2ff",
-  bright: "#f2eafb",
+  dust: "#3d3355",
+  dim: "#9b7fe0",
+  star: "#d9c8ff",
+  bright: "#f7f2ff",
   accent: "#b693f9",
-  text: "#dbd6e3",
-  muted: "#9d93ad",
+  text: "#e6def3",
+  muted: "#968cab",
 };
 
 async function fetchCalendar(login) {
@@ -58,163 +58,183 @@ function levelsFor(counts) {
   return (c) => (c <= 0 ? 0 : c <= q1 ? 1 : c <= q2 ? 2 : c <= q3 ? 3 : 4);
 }
 
-function stats(days) {
-  let longest = 0, run = 0, best = days[0];
+// All runs of consecutive active days, longest first (latest wins ties).
+function streaks(days) {
+  const runs = [];
+  let cur = [];
   for (const d of days) {
-    run = d.count > 0 ? run + 1 : 0;
-    longest = Math.max(longest, run);
-    if (d.count > best.count) best = d;
+    if (d.count > 0) cur.push(d);
+    else if (cur.length) runs.push(cur), (cur = []);
   }
-  // Current streak forgives an empty "today" (the day is not over yet).
-  let current = 0;
-  for (let i = days.length - 1; i >= 0; i--) {
-    if (days[i].count > 0) current++;
-    else if (i === days.length - 1) continue;
-    else break;
-  }
-  return { longest, current, best, active: days.filter((d) => d.count > 0).length };
-}
-
-// Deterministic jitter so stars sit off-grid like a real sky, stable between runs.
-function jitter(date, salt) {
-  let h = 2166136261 ^ salt;
-  for (const ch of date) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
-  return ((h >>> 0) % 1000) / 1000 - 0.5;
+  if (cur.length) runs.push(cur);
+  return runs.sort((a, b) => b.length - a.length || (a[0].date < b[0].date ? 1 : -1));
 }
 
 const fmt = (n) => n.toLocaleString("en-US");
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+const short = (date) => {
+  const d = new Date(date + "T00:00:00Z");
+  return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}`;
+};
+
+// Comb-shaped figure: each week's run hangs from a rail joining the weeks.
+function figurePath(run) {
+  const segs = [];
+  for (let i = 1; i < run.length; i++) {
+    const a = run[i - 1], b = run[i];
+    if (a.wi === b.wi) segs.push([a, b]);
+  }
+  const weeks = [...new Set(run.map((d) => d.wi))];
+  for (let i = 1; i < weeks.length; i++) {
+    const prev = run.filter((d) => d.wi === weeks[i - 1]);
+    const next = run.filter((d) => d.wi === weeks[i]);
+    segs.push([prev[0], next[0]]);
+  }
+  return segs.map(([a, b]) => `M${a.x.toFixed(1)} ${a.y.toFixed(1)}L${b.x.toFixed(1)} ${b.y.toFixed(1)}`).join("");
+}
 
 function render(cal) {
-  const W = 1200, H = 440;
-  const padX = 56, top = 74, cell = (W - padX * 2) / cal.weeks.length, rowH = 30;
+  const W = 1000, H = 470;
+  const left = 84, right = 36, top = 122, rowH = 24;
+  const cell = (W - left - right) / cal.weeks.length;
+  const gridBottom = top + rowH * 7;
 
   const days = [];
   cal.weeks.forEach((w, wi) =>
     w.contributionDays.forEach((d) => {
       const wd = new Date(d.date + "T00:00:00Z").getUTCDay();
-      days.push({
-        date: d.date,
-        count: d.contributionCount,
-        x: padX + cell * (wi + 0.5) + jitter(d.date, 1) * cell * 0.5,
-        y: top + rowH * (wd + 0.5) + jitter(d.date, 2) * rowH * 0.42,
-        wi,
-        wd,
-      });
+      days.push({ date: d.date, count: d.contributionCount, wi, wd, x: left + cell * (wi + 0.5), y: top + rowH * (wd + 0.5) });
     }),
   );
   const level = levelsFor(days.map((d) => d.count));
   days.forEach((d) => (d.level = level(d.count)));
-  const s = stats(days);
 
-  // Nebula sits behind the densest four-week stretch.
-  const weekly = cal.weeks.map((w) => w.contributionDays.reduce((a, d) => a + d.contributionCount, 0));
-  let peak = 0, peakSum = -1;
-  for (let i = 0; i + 4 <= weekly.length; i++) {
-    const sum = weekly.slice(i, i + 4).reduce((a, b) => a + b, 0);
-    if (sum > peakSum) (peakSum = sum), (peak = i + 2);
-  }
-  const nebulaX = padX + cell * peak;
+  const runs = streaks(days);
+  const longest = runs[0] ?? [];
+  const inLongest = new Set(longest);
+  const best = days.reduce((m, d) => (d.count > m.count ? d : m), days[0]);
+  const active = days.filter((d) => d.count > 0).length;
 
-  // Constellation lines: consecutive active days, plus same-weekday neighbours
-  // when both nights are bright enough to read as a shape.
-  const lines = [];
-  for (let i = 1; i < days.length; i++) {
-    const a = days[i - 1], b = days[i];
-    if (a.level && b.level && b.wi === a.wi) lines.push([a, b, Math.min(a.level, b.level)]);
-  }
-  const byPos = new Map(days.map((d) => [`${d.wi}:${d.wd}`, d]));
-  for (const d of days) {
-    const n = byPos.get(`${d.wi + 1}:${d.wd}`);
-    if (n && d.level >= 2 && n.level >= 2) lines.push([d, n, Math.min(d.level, n.level)]);
-  }
+  // Faint figures for every other streak of 4+ days; the longest one is drawn bright.
+  const minor = runs.slice(1).filter((r) => r.length >= 4).map(figurePath).join("");
+  const major = longest.length > 1 ? figurePath(longest) : "";
 
-  const r = [0.9, 1.5, 2.1, 2.8, 3.4];
-  const op = [0.55, 0.62, 0.78, 0.92, 1];
-  const fill = [C.dust, C.accent, C.star, C.star, C.bright];
-
-  const sparkle = (x, y, k) =>
-    `<path d="M${x} ${y - k}Q${x} ${y} ${x + k} ${y}Q${x} ${y} ${x} ${y + k}Q${x} ${y} ${x - k} ${y}Q${x} ${y} ${x} ${y - k}Z" fill="${C.bright}"/>`;
-
-  let twinkle = 0;
+  let tw = 0;
   const stars = days
     .map((d) => {
       const x = d.x.toFixed(1), y = d.y.toFixed(1);
-      const title = `<title>${d.date}: ${d.count} contribution${d.count === 1 ? "" : "s"}</title>`;
-      if (d.level === 4) {
-        const delay = ((twinkle++ * 0.73) % 6).toFixed(2);
-        return `<g class="tw" style="animation-delay:${delay}s">${title}<circle cx="${x}" cy="${y}" r="9" fill="url(#halo)"/>${sparkle(+x, +y, 7)}<circle cx="${x}" cy="${y}" r="${r[4]}" fill="${C.bright}"/></g>`;
+      const title = `<title>${short(d.date)}: ${d.count} contribution${d.count === 1 ? "" : "s"}</title>`;
+      const boost = inLongest.has(d) ? 1 : 0.82;
+      switch (d.level) {
+        case 0:
+          return `<circle cx="${x}" cy="${y}" r="1.3" fill="${C.dust}">${title}</circle>`;
+        case 1:
+          return `<circle cx="${x}" cy="${y}" r="2.3" fill="${C.dim}" opacity="${boost}">${title}</circle>`;
+        case 2:
+          return `<circle cx="${x}" cy="${y}" r="3.1" fill="${C.star}" opacity="${boost}">${title}</circle>`;
+        case 3:
+          return `<g opacity="${boost}">${title}<circle cx="${x}" cy="${y}" r="8" fill="url(#halo)"/><circle cx="${x}" cy="${y}" r="3.8" fill="${C.star}"/></g>`;
+        default: {
+          const delay = ((tw++ * 0.73) % 6).toFixed(2);
+          return `<g class="tw" style="animation-delay:${delay}s">${title}<circle cx="${x}" cy="${y}" r="11" fill="url(#halo)"/>${sparkle(+x, +y, 8.5, C.bright)}</g>`;
+        }
       }
-      const glow = d.level === 3 ? `<circle cx="${x}" cy="${y}" r="6" fill="url(#halo)" opacity=".7"/>` : "";
-      return `<g>${title}${glow}<circle cx="${x}" cy="${y}" r="${r[d.level]}" fill="${fill[d.level]}" opacity="${op[d.level]}"/></g>`;
     })
     .join("");
 
-  const lineSvg = lines
-    .map(([a, b, l]) => `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke-opacity="${(0.2 + l * 0.09).toFixed(2)}"/>`)
+  // Annotation for the longest streak, placed above the grid and kept inside the panel.
+  let note = "";
+  if (longest.length > 1) {
+    const midX = (longest[0].x + longest[longest.length - 1].x) / 2;
+    const topY = Math.min(...longest.map((d) => d.y)) - 10;
+    const anchorEnd = midX > W - 260;
+    const anchorStart = midX < left + 160;
+    const tx = anchorEnd ? midX + 6 : anchorStart ? midX - 6 : midX;
+    const anchor = anchorEnd ? "end" : anchorStart ? "start" : "middle";
+    note = `<path d="M${midX.toFixed(1)} 92V${topY.toFixed(1)}" stroke="${C.accent}" stroke-opacity=".55" stroke-dasharray="2 3"/>
+<text class="na" x="${tx.toFixed(1)}" y="66" text-anchor="${anchor}">LONGEST STREAK · ${longest.length} DAYS</text>
+<text class="nb" x="${tx.toFixed(1)}" y="84" text-anchor="${anchor}">${short(longest[0].date)} – ${short(longest[longest.length - 1].date)}</text>`;
+  }
+
+  const ring = best.count
+    ? `<circle cx="${best.x.toFixed(1)}" cy="${best.y.toFixed(1)}" r="13" fill="none" stroke="${C.accent}" stroke-width="1.2"/>`
+    : "";
+
+  const weekdays = [[1, "MON"], [3, "WED"], [5, "FRI"]]
+    .map(([r, l]) => `<text class="wd" x="${left - 18}" y="${(top + rowH * (r + 0.5) + 4).toFixed(1)}">${l}</text>`)
     .join("");
 
-  // Month ticks where a new month starts in a week's first day.
   let lastMonth = -1;
   const months = cal.weeks
     .map((w, wi) => {
       const m = new Date(w.contributionDays[0].date + "T00:00:00Z").getUTCMonth();
       if (m === lastMonth || wi > cal.weeks.length - 2) return "";
       lastMonth = m;
-      const x = (padX + cell * wi + cell * 0.5).toFixed(1);
-      return `<line x1="${x}" y1="${top + rowH * 7 + 14}" x2="${x}" y2="${top + rowH * 7 + 20}" stroke="${C.border}"/><text x="${x}" y="${top + rowH * 7 + 36}">${MONTHS[m]}</text>`;
+      return `<text class="mo" x="${(left + cell * wi + 2).toFixed(1)}" y="${gridBottom + 30}">${MONTHS[m]}</text>`;
     })
     .join("");
 
+  // Legend: the same marks the sky uses, smallest to brightest.
+  // Sits on whichever side the streak note leaves free.
+  const noteX = longest.length > 1 ? (longest[0].x + longest[longest.length - 1].x) / 2 : 0;
+  const legendLeft = noteX > W / 2;
+  const lx = legendLeft ? 44 : W - right - 200, ly = 86;
+  const legend = `<text class="lg" x="${lx}" y="${ly + 4}">LESS</text>
+<circle cx="${lx + 54}" cy="${ly}" r="1.3" fill="${C.dust}"/><circle cx="${lx + 74}" cy="${ly}" r="2.3" fill="${C.dim}"/>
+<circle cx="${lx + 96}" cy="${ly}" r="3.1" fill="${C.star}"/><circle cx="${lx + 120}" cy="${ly}" r="3.8" fill="${C.star}"/>
+${sparkle(lx + 146, ly, 8.5, C.bright)}<text class="lg" x="${lx + 166}" y="${ly + 4}">MORE</text>`;
+
   const first = days[0].date, last = days[days.length - 1].date;
-  const bestDate = new Date(s.best.date + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
-  const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
-  const bestShort = new Date(s.best.date + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
   const facts = [
-    [fmt(cal.totalContributions), "contributions"],
-    [fmt(s.active), "active days"],
-    [plural(s.longest, "day"), "longest streak"],
-    [fmt(s.best.count), `best day · ${bestShort}`],
+    [fmt(cal.totalContributions), "CONTRIBUTIONS"],
+    [fmt(active), "ACTIVE DAYS"],
+    [`${longest.length} day${longest.length === 1 ? "" : "s"}`, "LONGEST STREAK"],
+    [fmt(best.count), `BEST DAY · ${short(best.date)}`],
   ];
-  const colW = (W - padX * 2) / facts.length;
+  const colW = (W - 88) / facts.length;
+  const factY = H - 58;
   const factSvg = facts
-    .map(([v, l], i) => `<text class="v" x="${(padX + colW * i).toFixed(1)}" y="${H - 50}">${v}</text><text class="l" x="${(padX + colW * i).toFixed(1)}" y="${H - 22}">${l.toUpperCase()}</text>`)
+    .map(([v, l], i) => {
+      const x = 44 + colW * i;
+      const glyph = i === 3 ? `<circle cx="${x + 5}" cy="${factY + 24}" r="5" fill="none" stroke="${C.accent}" stroke-width="1.2"/>` : "";
+      return `<text class="v" x="${x}" y="${factY}">${v}</text>${glyph}<text class="l" x="${x + (i === 3 ? 16 : 0)}" y="${factY + 29}">${l}</text>`;
+    })
     .join("");
 
-  const summary = `${fmt(cal.totalContributions)} contributions from ${first} to ${last}: ${s.active} active days, longest streak ${plural(s.longest, "day")}, best day ${bestDate} with ${s.best.count}.`;
+  const summary = `${fmt(cal.totalContributions)} contributions between ${short(first)} ${first.slice(0, 4)} and ${short(last)} ${last.slice(0, 4)}, on ${active} active days. Longest streak: ${longest.length} days. Best day: ${short(best.date)} with ${best.count} contributions.`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t d">
 <title id="t">Contribution sky of ${LOGIN}</title>
 <desc id="d">${summary}</desc>
 <defs>
-<radialGradient id="halo"><stop offset="0" stop-color="${C.star}" stop-opacity=".55"/><stop offset="1" stop-color="${C.star}" stop-opacity="0"/></radialGradient>
-<radialGradient id="nebula" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5b3fa0" stop-opacity=".28"/><stop offset=".55" stop-color="#3a2a68" stop-opacity=".1"/><stop offset="1" stop-color="#0d1117" stop-opacity="0"/></radialGradient>
-<linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1117"/><stop offset="1" stop-color="#140f22"/></linearGradient>
-<clipPath id="panel"><rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="12"/></clipPath>
+<radialGradient id="halo"><stop offset="0" stop-color="${C.star}" stop-opacity=".5"/><stop offset="1" stop-color="${C.star}" stop-opacity="0"/></radialGradient>
+<linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${C.top}"/><stop offset="1" stop-color="${C.bottom}"/></linearGradient>
 </defs>
-<style>
-text{font-family:Inter,"Segoe UI",Arial,sans-serif}
-.m text{fill:${C.muted};font-size:13px;letter-spacing:.16em;text-anchor:middle}
-.f .v{fill:${C.bright};font-size:30px;font-weight:600;font-variant-numeric:tabular-nums}
-.f .l{fill:${C.muted};font-size:14px;letter-spacing:.14em}
-.k{fill:${C.muted};font-size:13px;letter-spacing:.22em}
-.c line{stroke:${C.line};stroke-width:.8}
-.tw{animation:tw 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-@keyframes tw{0%,100%{opacity:1}50%{opacity:.45}}
+<style>${fontCss("sans")}
+text{font-family:${SANS}}
+.wd,.mo,.lg{fill:${C.muted};font-size:14px;letter-spacing:.12em}
+.wd{text-anchor:end}
+.na{fill:${C.text};font-size:16px;font-weight:500;letter-spacing:.16em}
+.nb{fill:${C.muted};font-size:14px;letter-spacing:.12em}
+.rg{fill:${C.muted};font-size:14px;letter-spacing:.16em}
+.v{fill:${C.bright};font-size:36px;font-weight:500;font-variant-numeric:tabular-nums}
+.l{fill:${C.muted};font-size:14px;letter-spacing:.12em}
+.tw{animation:tw 6s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:1}50%{opacity:.5}}
 @media (prefers-reduced-motion:reduce){.tw{animation:none}}
 </style>
-<g clip-path="url(#panel)">
-<rect width="${W}" height="${H}" fill="url(#dusk)"/>
-<ellipse cx="${nebulaX.toFixed(1)}" cy="${top + rowH * 3.5}" rx="260" ry="150" fill="url(#nebula)"/>
-<g transform="translate(${W - 74} 38)"><circle r="13" fill="none" stroke="${C.border}"/><path d="M4-12.4A13 13 0 1 0 4 12.4A10 10 0 1 1 4-12.4Z" fill="${C.star}" opacity=".85"/></g>
-</g>
-<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="12" fill="none" stroke="${C.border}" stroke-width="1.2"/>
-<text class="k" x="${padX}" y="44">${first.replaceAll("-", ".")} — ${last.replaceAll("-", ".")}</text>
-<g class="c">${lineSvg}</g>
-<g>${stars}</g>
-<g class="m">${months}</g>
-<line x1="${padX}" y1="${H - 100}" x2="${W - padX}" y2="${H - 100}" stroke="${C.border}"/>
-<g class="f">${factSvg}</g>
+<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="14" fill="url(#dusk)" stroke="${C.border}"/>
+<text class="rg" x="44" y="64">${short(first)} ${first.slice(0, 4)} — ${short(last)} ${last.slice(0, 4)}</text>
+${legend}
+${note}
+${weekdays}
+<path d="${minor}" fill="none" stroke="${C.accent}" stroke-opacity=".22" stroke-width="1"/>
+<path d="${major}" fill="none" stroke="${C.accent}" stroke-opacity=".75" stroke-width="1.4"/>
+${stars}
+${ring}
+${months}
+<line x1="44" y1="${H - 118}" x2="${W - 44}" y2="${H - 118}" stroke="${C.border}"/>
+${factSvg}
 </svg>
 `;
 }
