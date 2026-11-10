@@ -10,7 +10,9 @@
 
 **Software Engineer · Systems, Automation & Applied AI**
 
-I build and maintain software systems that connect products, data, and operations. My work spans backend services, interfaces, integrations, and automation, with a growing focus on applied AI.
+**I turn complex workflows into reliable software.**
+
+I build backend services, integrations, and automations that connect products, data, and day-to-day operations. I'm also exploring applied AI where it can reduce manual work.
 
 Based in Brazil · **Computer Engineering @ UFG**
 
@@ -23,9 +25,9 @@ Based in Brazil · **Computer Engineering @ UFG**
 ## Featured projects
 
 <div align="center">
-  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/fan-chat-icons.svg" width="49%" alt="FURIA Fan Chat: conversational esports interface using React, Vite and Tailwind CSS." /></a>
-  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/know-your-fan-icons.svg" width="49%" alt="FURIA Know Your Fan: fan registration using React, Firebase and Vite." /></a>
-  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/scraper-icons.svg" width="49%" alt="Amazon Product Scraper: product data extraction using TypeScript, Bun and Express." /></a>
+  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/fan-chat-horizontal.svg" width="100%" alt="FURIA Fan Chat: conversational esports interface with simulated chat, match information, team profiles and news. React, Vite and Tailwind CSS." /></a>
+  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/know-your-fan-horizontal.svg" width="100%" alt="FURIA Know Your Fan: fan registration with validation, document uploads and Firebase integration. React, Firebase and Vite." /></a>
+  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/scraper-horizontal.svg" width="100%" alt="Amazon Product Scraper: product search experiment using TypeScript, Bun and Express." /></a>
 </div>
 
 <details>
@@ -78,10 +80,15 @@ Based in Brazil · **Computer Engineering @ UFG**
 
 ---
 
+## Professional work
+
+I build and maintain production software, integrations, and internal tools that connect systems and help streamline day-to-day workflows. Most of this work lives in private repositories.
+
 ### Outside the editor
 
 Outside software, I run, lift, play beach volleyball, and study languages.
 
 ---
 
-<p align="center"><i>Curiosity, discipline, and iteration.</i></p>
+<p align="center"><i>Curiosity, discipline, and iteration.</i><br>
+<a href="mailto:gabrielmds0306@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/gabriel-melo-dos-santos/">LinkedIn</a></p>
