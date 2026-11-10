@@ -2,11 +2,13 @@
 // Builds the static README panels in light and dark:
 // project cards, toolkit, section horizons, footer and the star bullet.
 // Run: node scripts/build-profile.mjs
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { ROOT, THEMES, SANS, fontCss, esc, rng, sparkle } from "./theme.mjs";
 
 const OUT = resolve(ROOT, "assets/profile");
+// Brand marks from Simple Icons (CC0), 24×24 paths keyed by toolkit name.
+const ICONS = JSON.parse(readFileSync(resolve(ROOT, "scripts/icons.json"), "utf8"));
 mkdirSync(OUT, { recursive: true });
 
 const PROJECTS = [
@@ -133,7 +135,11 @@ function toolkit(mode) {
   const cols = TOOLKIT.map(([label, items], i) => {
     const x = 36 + colW * i;
     const names = items
-      .map((name, j) => `<text class="i" x="${x}" y="${94 + j * 34}">${esc(name)}</text>`)
+      .map((name, j) => {
+        const y = 94 + j * 34;
+        if (!ICONS[name]) throw new Error(`No icon for ${name}`);
+        return `<path transform="translate(${x} ${y - 15}) scale(.75)" d="${ICONS[name]}" fill="${t.icon}"/><text class="i" x="${x + 28}" y="${y}">${esc(name)}</text>`;
+      })
       .join("");
     const tick = i ? `<line x1="${x - 18}" y1="34" x2="${x - 18}" y2="${H - 26}" stroke="${t.border}"/>` : "";
     return `${tick}${sparkle(x + 4, 44, 5, t.accent)}<text class="l" x="${x + 16}" y="49">${esc(label.toUpperCase())}</text>${names}`;
@@ -146,7 +152,7 @@ text{font-family:${SANS}}
 .l{font-weight:500;font-size:12.5px;letter-spacing:.2em;fill:${t.accent}}
 .i{font-weight:400;font-size:19px;fill:${t.title}}${motion}
 </style>
-<g clip-path="url(#c)">${starfield("toolkit", t, W, H, 40, mode, TOOLKIT.map(([, items], i) => ({ x: 36 + colW * i, y: 30, w: 160, h: 70 + items.length * 34 })))}</g>
+<g clip-path="url(#c)">${starfield("toolkit", t, W, H, 40, mode, TOOLKIT.map(([, items], i) => ({ x: 36 + colW * i, y: 30, w: 176, h: 70 + items.length * 34 })))}</g>
 <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="14" fill="none" stroke="${t.border}"/>
 ${cols}
 </svg>
