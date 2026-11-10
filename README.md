@@ -54,7 +54,7 @@ Based in Brazil · **Computer Engineering @ UFG**
 ## Toolkit
 
 <div align="center">
-  <img src="./assets/toolkit-icons.svg" width="85%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, PostgreSQL, Prisma, Google Cloud and n8n." />
+  <img src="./assets/toolkit-icons.svg" width="100%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, PostgreSQL, Prisma, Google Cloud and n8n." />
 </div>
 
 <details>
@@ -70,13 +70,18 @@ Based in Brazil · **Computer Engineering @ UFG**
 ## Currently
 
 <div align="center">
-  <img src="./assets/currently.png" width="85%" alt="Current focus: software and integrations, applied AI, system design, and independent products." />
+  <img src="./assets/currently.svg" width="100%" alt="Current focus: software and integrations, applied AI, system design, and independent products." />
 </div>
+
+<details>
+<summary>Current work in text</summary>
 
 - Building production software and integrations.
 - Exploring applied AI, agent workflows, and retrieval systems.
 - Studying system design and reliable automation.
 - Prototyping independent products and ideas.
+
+</details>
 
 ---
 
