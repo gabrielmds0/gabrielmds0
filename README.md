@@ -22,32 +22,58 @@ Based in Brazil · **Computer Engineering @ UFG**
 
 ## Featured projects
 
-<div align="center">
-  <a href="https://github.com/gabrielmds0/FuriaFanChat"><img src="./assets/projects/furia-fan-chat.png" width="49%" alt="FURIA Fan Chat — React, Vite and Tailwind" /></a>
-  <a href="https://github.com/gabrielmds0/FuriaKnowYourFan"><img src="./assets/projects/furia-know-your-fan.png" width="49%" alt="FURIA Know Your Fan — React and Firebase" /></a>
-  <a href="https://github.com/gabrielmds0/AmazonScraper"><img src="./assets/projects/amazon-scraper.png" width="49%" alt="Amazon Scraper — TypeScript, Bun and Express" /></a>
-</div>
+### <img src="./assets/gamepad.svg" width="28" alt="" /> FURIA Fan Chat
+
+An esports chat experience with simulated conversations, match information, team profiles, and news.
+
+![React](https://img.shields.io/badge/React-241d35?style=flat-square&logo=react&logoColor=cbb2ff) ![Vite](https://img.shields.io/badge/Vite-241d35?style=flat-square&logo=vite&logoColor=cbb2ff) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-241d35?style=flat-square&logo=tailwindcss&logoColor=cbb2ff)
+
+[View code →](https://github.com/gabrielmds0/FuriaFanChat)
+
+### FURIA Know Your Fan
+
+A fan registration experience with form validation, document uploads, and Firebase integration.
+
+![React](https://img.shields.io/badge/React-241d35?style=flat-square&logo=react&logoColor=cbb2ff) ![Vite](https://img.shields.io/badge/Vite-241d35?style=flat-square&logo=vite&logoColor=cbb2ff) ![Firebase](https://img.shields.io/badge/Firebase-241d35?style=flat-square&logo=firebase&logoColor=cbb2ff)
+
+[View code →](https://github.com/gabrielmds0/FuriaKnowYourFan)
+
+### Amazon Product Scraper
+
+A full-stack experiment that searches Amazon product listings and displays organized results.
+
+![TypeScript](https://img.shields.io/badge/TypeScript-241d35?style=flat-square&logo=typescript&logoColor=cbb2ff) ![Bun](https://img.shields.io/badge/Bun-241d35?style=flat-square&logo=bun&logoColor=cbb2ff) ![Express](https://img.shields.io/badge/Express-241d35?style=flat-square&logo=express&logoColor=cbb2ff)
+
+[View code →](https://github.com/gabrielmds0/AmazonScraper)
 
 <sub>Most of my production work lives in private repositories. These are public experiments and projects; I share technical write-ups when appropriate.</sub>
 
 ---
 
-<div align="center">
-  <img src="./assets/toolkit.png" width="85%" alt="Toolkit: TypeScript, JavaScript, Python, React, Next.js, Tailwind CSS, Node.js, NestJS, REST APIs, PostgreSQL, Prisma, Google Cloud, n8n" />
-  <img src="./assets/currently.png" width="85%" alt="Currently: production software, AI agents, retrieval systems, system design, automation, and independent products" />
-</div>
+## Toolkit
 
-<details>
-<summary>Tooling and current work in text</summary>
+**Languages**
 
-**Languages:** TypeScript, JavaScript, Python  
-**Frontend:** React, Next.js, Tailwind CSS  
-**Backend:** Node.js, NestJS, REST APIs  
-**Data & infrastructure:** PostgreSQL, Prisma, GCP, n8n
+![TypeScript](https://img.shields.io/badge/TypeScript-241d35?style=flat-square&logo=typescript&logoColor=cbb2ff) ![JavaScript](https://img.shields.io/badge/JavaScript-241d35?style=flat-square&logo=javascript&logoColor=cbb2ff) ![Python](https://img.shields.io/badge/Python-241d35?style=flat-square&logo=python&logoColor=cbb2ff)
 
-Right now, I work on production software and integrations, explore applied AI and agent workflows, and study system design and reliable automation.
+**Frontend**
 
-</details>
+![React](https://img.shields.io/badge/React-241d35?style=flat-square&logo=react&logoColor=cbb2ff) ![Next.js](https://img.shields.io/badge/Next.js-241d35?style=flat-square&logo=nextdotjs&logoColor=cbb2ff) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-241d35?style=flat-square&logo=tailwindcss&logoColor=cbb2ff)
+
+**Backend**
+
+![Node.js](https://img.shields.io/badge/Node.js-241d35?style=flat-square&logo=nodedotjs&logoColor=cbb2ff) ![NestJS](https://img.shields.io/badge/NestJS-241d35?style=flat-square&logo=nestjs&logoColor=cbb2ff) ![REST APIs](https://img.shields.io/badge/REST_APIs-241d35?style=flat-square)
+
+**Data & infrastructure**
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-241d35?style=flat-square&logo=postgresql&logoColor=cbb2ff) ![Prisma](https://img.shields.io/badge/Prisma-241d35?style=flat-square&logo=prisma&logoColor=cbb2ff) ![Google Cloud](https://img.shields.io/badge/Google_Cloud-241d35?style=flat-square&logo=googlecloud&logoColor=cbb2ff) ![n8n](https://img.shields.io/badge/n8n-241d35?style=flat-square&logo=n8n&logoColor=cbb2ff)
+
+## Currently
+
+- Building production software and integrations.
+- Exploring applied AI, agent workflows, and retrieval systems.
+- Studying system design and reliable automation.
+- Prototyping independent products and ideas.
 
 ---
 
