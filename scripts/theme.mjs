@@ -9,13 +9,11 @@ export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 const font = (file) => readFileSync(resolve(ROOT, "scripts/fonts", file)).toString("base64");
 const FACES = {
-  sans: `@font-face{font-family:"Jost";font-weight:300 700;src:url(data:font/woff2;base64,${font("jost.woff2")}) format("woff2")}`,
-  serif: `@font-face{font-family:"Cormorant";font-weight:600;src:url(data:font/woff2;base64,${font("cormorant-600.woff2")}) format("woff2")}`,
+  sans: `@font-face{font-family:"Sora";font-weight:300 700;src:url(data:font/woff2;base64,${font("sora.woff2")}) format("woff2")}`,
 };
 export const fontCss = (...which) => which.map((w) => FACES[w]).join("");
 
-export const SANS = `Jost,"Segoe UI",Helvetica,Arial,sans-serif`;
-export const SERIF = `Cormorant,Garamond,Georgia,serif`;
+export const SANS = `Sora,"Segoe UI",Helvetica,Arial,sans-serif`;
 
 // Matched to GitHub's own surfaces so panels sit on the page instead of on a slab.
 export const THEMES = {

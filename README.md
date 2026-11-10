@@ -2,21 +2,19 @@
 
 <img src="./assets/banner.png" alt="Gabriel Melo — Software Engineer. Dark astral landscape, violet geometric portal, systems / automation / AI." width="100%" />
 
-</div>
-
-<img align="right" width="220" src="./assets/statue-transparent.png" alt="Violet classical bust with geometric orbital lines" />
-
 ### Hi, I'm Gabriel
 
 **I turn complex workflows into reliable software.**
 
-I build backend services, integrations, and automations that connect products, data, and day-to-day operations. I'm also exploring applied AI where it can reduce manual work.
+I build backend services, integrations, and automations that connect products, data,<br>and day-to-day operations. I'm also exploring applied AI where it can reduce manual work.
 
 Software Engineer · Computer Engineering @ UFG · Brazil
 
-[LinkedIn](https://www.linkedin.com/in/gabriel-melo-dos-santos/) · [Email](mailto:gabrielmds0306@gmail.com) · [All repositories](https://github.com/gabrielmds0?tab=repositories)
+[LinkedIn](https://www.linkedin.com/in/gabriel-melo-dos-santos/) &nbsp;·&nbsp; [Email](mailto:gabrielmds0306@gmail.com) &nbsp;·&nbsp; [All repositories](https://github.com/gabrielmds0?tab=repositories)
 
-<br clear="right" />
+<picture><source media="(prefers-color-scheme: light)" srcset="./assets/profile/horizon-intro-light.svg"><img src="./assets/profile/horizon-intro-dark.svg" width="100%" alt="" /></picture>
+
+</div>
 
 ### Featured projects
 
@@ -32,10 +30,12 @@ Software Engineer · Computer Engineering @ UFG · Brazil
 
 ### Currently
 
-- Building production software and integrations.
-- Exploring applied AI, agent workflows, and retrieval systems.
-- Studying system design and reliable automation.
-- Prototyping independent products and ideas.
+<img src="./assets/profile/star.svg" width="12" alt="" />&nbsp; Building production software and integrations.<br>
+<img src="./assets/profile/star.svg" width="12" alt="" />&nbsp; Exploring applied AI, agent workflows, and retrieval systems.<br>
+<img src="./assets/profile/star.svg" width="12" alt="" />&nbsp; Studying system design and reliable automation.<br>
+<img src="./assets/profile/star.svg" width="12" alt="" />&nbsp; Prototyping independent products and ideas.
+
+<picture><source media="(prefers-color-scheme: light)" srcset="./assets/profile/horizon-sky-light.svg"><img src="./assets/profile/horizon-sky-dark.svg" width="100%" alt="" /></picture>
 
 ### Contribution sky
 
@@ -47,6 +47,4 @@ Software Engineer · Computer Engineering @ UFG · Brazil
 
 I run, lift, play beach volleyball, and study languages.
 
----
-
-<p align="center"><i>Curiosity, discipline, and iteration.</i></p>
+<picture><source media="(prefers-color-scheme: light)" srcset="./assets/profile/footer-light.svg"><img src="./assets/profile/footer-dark.svg" width="100%" alt="Curiosity, discipline, and iteration." /></picture>
