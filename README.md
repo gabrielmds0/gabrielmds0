@@ -39,7 +39,7 @@ Software Engineer · Computer Engineering @ UFG · Brazil
 
 ### Contribution sky
 
-<!-- sky:start --><img src="./assets/constellation.svg" width="100%" alt="Contribution sky, a night-sky drawing of the contribution calendar: 1,928 contributions between NOV 23 2025 and NOV 24 2026, on 177 active days. Longest streak: 21 days. Best day: NOV 10 with 67 contributions." /><!-- sky:end -->
+<!-- sky:start --><img src="./assets/constellation.svg" width="100%" alt="Contribution sky, a night-sky drawing of the contribution calendar: 1,944 contributions between NOV 23 2025 and NOV 25 2026, on 179 active days. Longest streak: 21 days. Best day: NOV 10 with 67 contributions." /><!-- sky:end -->
 
 <sub>One star per day, laid out like the contribution calendar below. The highlighted figure is my longest streak. Redrawn daily by a GitHub Action; most of these commits land in private repositories at work.</sub>
 
